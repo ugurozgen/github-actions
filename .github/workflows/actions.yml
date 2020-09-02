@@ -1,11 +1,11 @@
 name: Actions Workflow
 
 # on: [push, pull_request]
-on: 
+on:
   repository_dispatch:
     types: [custom_type] # in postman
   # schedule:
-    # - cron: "0/5 * * * *" #ever 5 minutes, min amount
+  # - cron: "0/5 * * * *" #ever 5 minutes, min amount
   # push:
   pull_request:
     types: [closed, assigned, opened, reopened]
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo payload
-        run: echo ${{ github.event.client_payload }}
+        run: echo ${{ github.event.client_payload.env }}
       - name: List Files
         run: |
           pwd
@@ -36,6 +36,6 @@ jobs:
         id: greet
         uses: actions/hello-world-javascript-action@v1 #@master(branchs) @2b3sdf(commit hash)
         with:
-            who-to-greet: Ugur
+          who-to-greet: Ugur
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
