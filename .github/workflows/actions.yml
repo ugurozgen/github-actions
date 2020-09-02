@@ -2,7 +2,11 @@ name: Actions Workflow
 
 # on: [push, pull_request]
 on: 
-  push:
+  repository_dispatch:
+    types: [custom_type] # in postman
+  # schedule:
+    # - cron: "0/5 * * * *" #ever 5 minutes, min amount
+  # push:
   pull_request:
     types: [closed, assigned, opened, reopened]
 
