@@ -20,6 +20,12 @@ jobs:
         with:
           entrypoint: '/usr/local/bin/node' # override entry point
           args: -v
+      - uses: action/checkout@v1
+      - name: run a script
+        uses: docker://node:12.14.1-alpine3.10 # step own container
+        with:
+          entrypoint: ./script.sh # override entry point
+          args: "Some string"
 
   node-docker:
     runs-on: ubuntu-latest
