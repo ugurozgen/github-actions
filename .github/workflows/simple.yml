@@ -5,9 +5,12 @@ on: [push]
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    timeout-minutes: 360 #max value 6 hours
     steps:
       - name: echo a string
         run: echo "Hello world"
+        timeout-minutes: 30
+        continue-on-error: true
       - name: multine script
         run: |
           node -v
