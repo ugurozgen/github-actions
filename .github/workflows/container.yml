@@ -13,13 +13,13 @@ jobs:
       - name: step with docker
         run: docker://node:12.14.1-alpine3.10 # step own container
         with:
-            entrypoint: '/bin/echo' # override entry point
-            args: 'Hello World'
+          entrypoint: '/bin/echo' # override entry point
+          args: 'Hello World'
       - name: step with docker
         run: docker://node:12.14.1-alpine3.10 # step own container
         with:
-            entrypoint: '/usr/local/bin/node' # override entry point
-            args: -v
+          entrypoint: '/usr/local/bin/node' # override entry point
+          args: -v
 
   node-docker:
     runs-on: ubuntu-latest
