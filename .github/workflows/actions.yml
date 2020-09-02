@@ -7,6 +7,20 @@ on:
   # schedule:
   # - cron: "0/5 * * * *" #ever 5 minutes, min amount
   # push:
+    # branches:
+      # - master
+      # - 'feature/*' # but feature/feat/a doesn't match
+      # - 'feature/**'
+      # - '!feature/featC' # exclude this branch
+    # branches-ignore: # we can't use branches and branches-ignore at the same time
+      # - develop
+    # tags:
+      # - v1
+    # tags-ignore:
+    # paths:
+      # - '**.js'
+    # paths-ignore:
+    
   pull_request:
     types: [closed, assigned, opened, reopened]
 
