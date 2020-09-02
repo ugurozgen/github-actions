@@ -31,9 +31,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
           SLACK_MESSAGE: "HELLOOOOOOOOOO!!!"
-        with:
-          entrypoint: ./script.sh # override entry point
-          args: "Some string"
 
   node-docker:
     runs-on: ubuntu-latest
