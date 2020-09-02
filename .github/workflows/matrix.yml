@@ -8,10 +8,21 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         node-version: [6,8,10] # it will trigger 3 different job
+        include: 
+          - os: ubuntu-latest
+            node-version: 8
+            is_ubuntu_8: "true" # extra info
+        exclude:
+          - os: ubuntu-latest
+            node-version: 6
+          - os: macos-latest
+            node-version: 8
       max-parallel: 2 # as default github maximize this number
       fail-fast: true
     # runs-on: ubuntu-latest
     runs-on: ${{ matrix.os }}
+    env:
+      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
     steps:
       - name: Log node version
         run: node -v
@@ -20,4 +31,6 @@ jobs:
             # node-version: 6
             node-version: ${{ matrix.node_version }}
       - name: Log node version
-        run: node -v
+        run: |
+          node -v
+          echo $IS_UBUNTU_8
